@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MeserosCreateDlg" widgetVar="MeserosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMeserosTitle}">
+            <h:form id="MeserosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{meserosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMeserosLabel_idmeseros}" for="idmeseros" />
+                        <p:inputText id="idmeseros" value="#{meserosController.selected.idmeseros}" title="#{bundle.CreateMeserosTitle_idmeseros}" required="true" requiredMessage="#{bundle.CreateMeserosRequiredMessage_idmeseros}"/>
+                        <p:outputLabel value="#{bundle.CreateMeserosLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{meserosController.selected.nombres}" title="#{bundle.CreateMeserosTitle_nombres}" required="true" requiredMessage="#{bundle.CreateMeserosRequiredMessage_nombres}"/>
+                        <p:outputLabel value="#{bundle.CreateMeserosLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{meserosController.selected.apellidos}" title="#{bundle.CreateMeserosTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateMeserosRequiredMessage_apellidos}"/>
+                        <p:outputLabel value="#{bundle.CreateMeserosLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{meserosController.selected.sexo}" title="#{bundle.CreateMeserosTitle_sexo}" required="true" requiredMessage="#{bundle.CreateMeserosRequiredMessage_sexo}"/>
+                        <p:outputLabel value="#{bundle.CreateMeserosLabel_salario}" for="salario" />
+                        <p:inputText id="salario" value="#{meserosController.selected.salario}" title="#{bundle.CreateMeserosTitle_salario}" required="true" requiredMessage="#{bundle.CreateMeserosRequiredMessage_salario}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{meserosController.create}" value="#{bundle.Save}" update="display,:MeserosListForm:datalist,:growl" oncomplete="handleSubmit(args,'MeserosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MeserosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MeserosViewDlg" widgetVar="MeserosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMeserosTitle}">
+            <h:form id="MeserosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{meserosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMeserosLabel_idmeseros}"/>
+                        <h:outputText value="#{meserosController.selected.idmeseros}" title="#{bundle.ViewMeserosTitle_idmeseros}"/>
+                        <h:outputText value="#{bundle.ViewMeserosLabel_nombres}"/>
+                        <h:outputText value="#{meserosController.selected.nombres}" title="#{bundle.ViewMeserosTitle_nombres}"/>
+                        <h:outputText value="#{bundle.ViewMeserosLabel_apellidos}"/>
+                        <h:outputText value="#{meserosController.selected.apellidos}" title="#{bundle.ViewMeserosTitle_apellidos}"/>
+                        <h:outputText value="#{bundle.ViewMeserosLabel_sexo}"/>
+                        <h:outputText value="#{meserosController.selected.sexo}" title="#{bundle.ViewMeserosTitle_sexo}"/>
+                        <h:outputText value="#{bundle.ViewMeserosLabel_salario}"/>
+                        <h:outputText value="#{meserosController.selected.salario}" title="#{bundle.ViewMeserosTitle_salario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MeserosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

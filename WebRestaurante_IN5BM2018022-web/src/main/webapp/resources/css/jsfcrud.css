@@ -1,0 +1,36 @@
+.ui-widget {
+    font-size: 12px !important;
+}
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+.ui-button {
+    margin-top: 10px !important;
+}
+
+body{
+background-color: #E69408;
+}
+
+h1{
+    font-size: 30px; 
+    background-color: #ffffff;
+}
+
+h2{
+    font-size: 20px;
+    background-color: #ffffff;
+}
+
+h3{
+    font-size: 15px;
+    background-color: #E69408;
+}

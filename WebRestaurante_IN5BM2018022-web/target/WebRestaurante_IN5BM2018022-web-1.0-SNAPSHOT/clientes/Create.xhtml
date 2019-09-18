@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClientesCreateDlg" widgetVar="ClientesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateClientesTitle}">
+            <h:form id="ClientesCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clientesController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateClientesLabel_idclientes}" for="idclientes" />
+                        <p:inputText id="idclientes" value="#{clientesController.selected.idclientes}" title="#{bundle.CreateClientesTitle_idclientes}" required="true" requiredMessage="#{bundle.CreateClientesRequiredMessage_idclientes}"/>
+                        <p:outputLabel value="#{bundle.CreateClientesLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{clientesController.selected.nombres}" title="#{bundle.CreateClientesTitle_nombres}" required="true" requiredMessage="#{bundle.CreateClientesRequiredMessage_nombres}"/>
+                        <p:outputLabel value="#{bundle.CreateClientesLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{clientesController.selected.apellidos}" title="#{bundle.CreateClientesTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateClientesRequiredMessage_apellidos}"/>
+                        <p:outputLabel value="#{bundle.CreateClientesLabel_tipodecliente}" for="tipodecliente" />
+                        <p:inputText id="tipodecliente" value="#{clientesController.selected.tipodecliente}" title="#{bundle.CreateClientesTitle_tipodecliente}" required="true" requiredMessage="#{bundle.CreateClientesRequiredMessage_tipodecliente}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clientesController.create}" value="#{bundle.Save}" update="display,:ClientesListForm:datalist,:growl" oncomplete="handleSubmit(args,'ClientesCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ClientesCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

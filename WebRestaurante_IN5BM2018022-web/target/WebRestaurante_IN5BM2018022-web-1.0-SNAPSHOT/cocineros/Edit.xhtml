@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CocinerosEditDlg" widgetVar="CocinerosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCocinerosTitle}">
+            <h:form id="CocinerosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cocinerosController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCocinerosLabel_idcocineros}" for="idcocineros" />
+                        <p:inputText id="idcocineros" value="#{cocinerosController.selected.idcocineros}" title="#{bundle.EditCocinerosTitle_idcocineros}" required="true" requiredMessage="#{bundle.EditCocinerosRequiredMessage_idcocineros}"/>
+                        <p:outputLabel value="#{bundle.EditCocinerosLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{cocinerosController.selected.nombres}" title="#{bundle.EditCocinerosTitle_nombres}" required="true" requiredMessage="#{bundle.EditCocinerosRequiredMessage_nombres}"/>
+                        <p:outputLabel value="#{bundle.EditCocinerosLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{cocinerosController.selected.apellidos}" title="#{bundle.EditCocinerosTitle_apellidos}" required="true" requiredMessage="#{bundle.EditCocinerosRequiredMessage_apellidos}"/>
+                        <p:outputLabel value="#{bundle.EditCocinerosLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{cocinerosController.selected.sexo}" title="#{bundle.EditCocinerosTitle_sexo}" required="true" requiredMessage="#{bundle.EditCocinerosRequiredMessage_sexo}"/>
+                        <p:outputLabel value="#{bundle.EditCocinerosLabel_sueldo}" for="sueldo" />
+                        <p:inputText id="sueldo" value="#{cocinerosController.selected.sueldo}" title="#{bundle.EditCocinerosTitle_sueldo}" required="true" requiredMessage="#{bundle.EditCocinerosRequiredMessage_sueldo}"/>
+                        <p:outputLabel value="#{bundle.EditCocinerosLabel_especialidad}" for="especialidad" />
+                        <p:inputText id="especialidad" value="#{cocinerosController.selected.especialidad}" title="#{bundle.EditCocinerosTitle_especialidad}" required="true" requiredMessage="#{bundle.EditCocinerosRequiredMessage_especialidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cocinerosController.update}" value="#{bundle.Save}" update="display,:CocinerosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CocinerosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CocinerosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
